@@ -22,17 +22,20 @@ public class PalindromeCheckerApp {
     */
 public static void main(String[] args)
 {
-    Scanner sc = new Scanner (System.in);
-    System.out.println("Input Text:");
-    String input = sc.next();
-    boolean ispalindrome=true;
-    int n = input.length();
-    for(int i=0;i<n/2;i++){
-        if(input.charAt(i)!=input.charAt(n-1-i)){
-    ispalindrome=false;
-    break;
-        }
+    Scanner scanner = new Scanner(System.in);
+    System.out.print("Enter a string: ");
+    String input = scanner.nextLine();
+    scanner.close();
+
+    String reverse = "";
+    // Iterate from the last character to the first.
+    for (int i = input.length() - 1; i >= 0; i--) {
+        reverse += input.charAt(i);
     }
-System.out.println("is it a palindrome?"+ispalindrome);
+    if (input.equals(reverse)) {
+        System.out.println("The string is a palindrome.");
+    } else {
+        System.out.println("The string is not a palindrome.");
+    }
 }
 }
