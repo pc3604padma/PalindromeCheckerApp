@@ -1,41 +1,31 @@
-/**
- MAIN CLASS UseCaseiPalindromeApp
- Use Case 1: Application Entry & Welcome Message
- Description:
- This class represents the entry point of the * Palindrome Checker Management System.
- At this stage, the application:
- Starts execution from the main() method
- * - Displays a welcome message
- Shows application version
- No palindrome logic is implemented yet.
- The goal is to establish a clear startup flow.
- @author pc3604padma
- @version 1.0
- */
-import java .util.Scanner;
+import java . util.Scanner;
 public class PalindromeCheckerApp {
-    /**
-    Application entry point.
-    This is the first method executed by the JVM
-    when the program starts.
-    @param args Command-Line arguments
-    */
+
 public static void main(String[] args)
 {
-    Scanner scanner = new Scanner(System.in);
-    System.out.print("Enter a string: ");
-    String input = scanner.nextLine();
-    scanner.close();
+    // Declare and initialize the input string.
+    String input = "radar";
+    // Convert the string into a character array.
+    char[] chars = input.toCharArray();
+    // Initialize pointer at the beginning.
+    int start = 0;
+    // Initialize pointer at the end.
+    int end = chars.length - 1; // Corrected from image hint 'chars.length - 0'
+    // Assume palindrome initially.
+    boolean isPalindrome = true;
 
-    String reverse = "";
-    // Iterate from the last character to the first.
-    for (int i = input.length() - 1; i >= 0; i--) {
-        reverse += input.charAt(i);
+    // Continue comparison until pointers cross.
+    while (start < end) {
+        if (chars[start] != chars[end]) {
+            isPalindrome = false;
+            break; // Exit loop early if characters don't match
+        }
+        start++;
+        end--;
     }
-    if (input.equals(reverse)) {
-        System.out.println("The string is a palindrome.");
-    } else {
-        System.out.println("The string is not a palindrome.");
-    }
+
+    System.out.println("Input: " + input);
+    System.out.println("Is Palindrome?: " + isPalindrome);
 }
 }
+
