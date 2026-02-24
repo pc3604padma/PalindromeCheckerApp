@@ -4,25 +4,19 @@ import java.util.*;
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
-        String input = "madan";
-        boolean isPalindrome = checkString(input, 0, input.length() - 1);
-        System.out.println("Input: " + input);
-        System.out.println("Is Palindrome: " + isPalindrome);
-    }
+        String input = "man a plan a canal Panama";
+        String normalized = input.toLowerCase().replaceAll("[^a-z0-9]", "");
 
-    private static boolean checkString(String s, int start, int end) {
-        // Base case 1: If the start index crosses or meets the end index, the string is a palindrome
-        if (start >= end) {
-            return true;
+        boolean isPalindrome = true;
+        for (int i = 0; i < normalized.length() / 2; i++) {
+            // Compare symmetric characters
+            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
+                isPalindrome = false;
+                break; // Exit the loop as soon as a mismatch is found
+            }
         }
-
-        // Base case 2: If characters at the current start and end positions don't match, it's not a palindrome
-        if (s.charAt(start) != s.charAt(end)) {
-            return false;
-        }
-
-        // Recursive step: Check the inner substring
-        return checkString(s, start + 1, end - 1);
+        System.out.println("Input: " + input + " " + isPalindrome);
+        System.out.println("Is Palindrome? " + isPalindrome);
     }
 }
 
