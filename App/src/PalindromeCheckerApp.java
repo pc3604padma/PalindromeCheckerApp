@@ -1,22 +1,33 @@
 import java.util.*;
 
-
 public class PalindromeCheckerApp {
 
-    public static void main(String[] args) {
-        String input = "man a plan a canal Panama";
-        String normalized = input.toLowerCase().replaceAll("[^a-z0-9]", "");
+    public static boolean checkPalindrome(String input) {
+        int start = 0;
+        int end = input.length() - 1;
 
-        boolean isPalindrome = true;
-        for (int i = 0; i < normalized.length() / 2; i++) {
-            // Compare symmetric characters
-            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
-                isPalindrome = false;
-                break; // Exit the loop as soon as a mismatch is found
+        while (start < end) {
+            if (input.charAt(start) != input.charAt(end)) {
+                return false;
             }
+            start++;
+            end--;
         }
-        System.out.println("Input: " + input + " " + isPalindrome);
-        System.out.println("Is Palindrome? " + isPalindrome);
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String str = sc.nextLine();
+
+        if (checkPalindrome(str)) {
+            System.out.println("It is a Palindrome");
+        } else {
+            System.out.println("Not a Palindrome");
+        }
+
+        sc.close();
     }
 }
-
